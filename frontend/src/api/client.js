@@ -3,16 +3,12 @@
 const api = axios.create({
   baseURL:
     import.meta.env.VITE_API_BASE_URL ||
-    "http://localhost:8000/api",
+    "https://breathe-esg-backend-fzhp.onrender.com/api",
 });
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("accessToken");
-
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
