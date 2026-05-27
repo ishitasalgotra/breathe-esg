@@ -2,5 +2,3 @@
 from .models import Tenant
 
 admin.site.register(Tenant)
-
-

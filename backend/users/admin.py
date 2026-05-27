@@ -3,11 +3,26 @@ from django.contrib.auth.admin import UserAdmin
 from .models import User
 
 
-@admin.register(User)
 class CustomUserAdmin(UserAdmin):
     model = User
+
     list_display = ("email", "tenant", "role", "is_staff")
-    list_filter = ("tenant", "role", "is_staff")
-    fieldsets = UserAdmin.fieldsets + (("Tenant", {"fields": ("tenant", "role")}),)
-    add_fieldsets = ((None, {"classes": ("wide",), "fields": ("email", "password1", "password2", "tenant", "role")}),)
+
+    fieldsets = (
+        (None, {"fields": ("email", "password")}),
+        ("Permissions", {"fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions")}),
+        ("Tenant Info", {"fields": ("tenant", "role")}),
+    )
+
+    add_fieldsets = (
+        (None, {
+            "classes": ("wide",),
+            "fields": ("email", "password1", "password2", "tenant", "role"),
+        }),
+    )
+
+    search_fields = ("email",)
     ordering = ("email",)
+
+
+admin.site.register(User, CustomUserAdmin)
