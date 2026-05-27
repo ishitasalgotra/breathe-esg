@@ -1,0 +1,7 @@
+﻿Employee ID,Trip Type,Departure Airport,Arrival Airport,Hotel Nights,Distance,Transport Category
+E-1001,Client Meeting,JFK,LHR,4,,Air
+E-1002,Conference,BLR,SIN,2,3180,Air
+E-1003,Site Visit,DEL,BOM,1,,Air
+E-1004,Local Travel,,,0,-30,Car
+E-1005,Sales Trip,SFO,FRA,5,42000,Air
+E-1006,Training,XXX,DXB,-1,,Air

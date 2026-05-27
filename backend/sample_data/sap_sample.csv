@@ -1,0 +1,7 @@
+﻿Plant Code,Material,Fuel Type,Quantity,Unit,Currency,Date
+DE01,DIESEL-BULK,Diesel,12500,L,EUR,2026-01-15
+US07,NATGAS,Gasoline,3,gal,USD,01/21/2026
+Werk,Material,Kraftstoff,Menge,Einheit,WAERS,BUDAT
+DE02,HEIZOEL,Heating Oil,-55,ltr,EUR,15.02.2026
+IN03,DIESEL,DIESEL,2500000,liters,INR,20260230
+,PROPANE,Propane,400,,USD,2026-03-01

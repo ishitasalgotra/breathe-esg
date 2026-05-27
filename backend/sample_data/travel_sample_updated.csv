@@ -1,0 +1,9 @@
+employee_id,origin_airport,destination_airport,travel_class,hotel_nights,transport_type,expense_amount,currency,travel_date
+EMP001,BLR,LHR,Business,5,Flight,4200,USD,2026-03-01
+EMP002,DEL,JFK,Economy,7,Flight,1800,USD,2026-03-05
+EMP003,SFO,,Economy,2,Flight,900,USD,2026-03-06
+EMP004,LAX,SYD,First,12,Flight,25000,USD,2026-03-07
+EMP005,BOM,DXB,Business,-3,Hotel,1200,AED,2026-03-08
+EMP006,CDG,FRA,Economy,1,Train,300,EUR,2026-03-09
+EMP007,XXX,LHR,Economy,2,Flight,700,USD,2026-03-10
+EMP008,SIN,NRT,Business,4,Flight,not_available,SGD,2026-03-11

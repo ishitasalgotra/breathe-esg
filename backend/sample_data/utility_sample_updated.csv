@@ -1,0 +1,8 @@
+meter_id,facility,billing_start,billing_end,kwh,tariff_type,unit,currency
+MTR-001,Berlin Plant,2026-01-01,2026-01-31,14500,Industrial,kWh,EUR
+MTR-002,London Office,2026-01-01,2026-01-31,-250,Commercial,kWh,GBP
+,New York HQ,2026-02-01,2026-02-28,22000,Commercial,kWh,USD
+MTR-004,Singapore DC,2026-03-01,2026-02-28,18000,Industrial,kWh,SGD
+MTR-005,Mumbai Plant,2026-04-01,2026-04-30,999999,Industrial,kWh,INR
+MTR-006,Tokyo Office,2026-05-01,2026-05-31,8500,residential,kWh,JPY
+MTR-007,Paris Office,2026-06-01,2026-06-30,not_available,Commercial,kWh,EUR
