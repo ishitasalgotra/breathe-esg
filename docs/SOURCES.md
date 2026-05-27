@@ -1,9 +1,121 @@
-﻿# Source Assumptions
+﻿# SOURCES.md
 
-SAP procurement and fuel exports often include plant codes, material identifiers, posting dates, quantities, units, and currency fields. German SAP header variants such as `WERK`, `MENGE`, `EINHEIT`, `WAERS`, and `BUDAT` are accepted.
+# 1. SAP Fuel & Procurement Data
 
-Utility electricity data is modeled around meter identifiers, billing start/end dates, kWh usage, tariff, and cost. Billing periods can cross month boundaries, so the validator only flags malformed or reversed periods.
+## Research
 
-Travel data follows common Concur/Navan-style exports: employee, trip type, transport category, airports, nights, and distance. When air distance is missing, the MVP infers great-circle distance for a small airport map.
+Reviewed:
+- SAP flat-file exports
+- IDoc concepts
+- SAP OData examples
+- ERP export patterns
 
-Limitations: no certified emission factors, no invoice PDF OCR, no vendor API syncing, and a deliberately small airport mapping table.
+Observed characteristics:
+- inconsistent units
+- localized headers
+- plant codes
+- malformed date formats
+- operational abbreviations
+
+---
+
+## Prototype Modeling
+
+The prototype intentionally includes:
+- German column names
+- inconsistent units
+- missing identifiers
+- malformed dates
+- unrealistic quantities
+
+Reason:
+Real enterprise ERP exports are rarely clean.
+
+---
+
+## What Would Break In Production
+
+- inconsistent schemas between clients
+- custom SAP mappings
+- missing master data
+- multilingual ERP deployments
+
+---
+
+# 2. Utility Electricity Data
+
+## Research
+
+Reviewed:
+- utility portal exports
+- energy billing structures
+- meter-based reporting
+
+Observed characteristics:
+- billing periods
+- tariff structures
+- irregular reporting cycles
+- inconsistent meter metadata
+
+---
+
+## Prototype Modeling
+
+Included:
+- missing meter IDs
+- overlapping billing periods
+- malformed usage values
+- inconsistent tariff naming
+
+Reason:
+Facilities data is operationally messy.
+
+---
+
+## What Would Break In Production
+
+- utility-specific schemas
+- timezone normalization
+- interval-based metering
+- partial billing periods
+
+---
+
+# 3. Corporate Travel Data
+
+## Research
+
+Reviewed:
+- Concur documentation
+- Navan platform exports
+- expense reporting structures
+
+Observed characteristics:
+- airport codes instead of distances
+- mixed transport modes
+- inconsistent expense metadata
+- incomplete trip details
+
+---
+
+## Prototype Modeling
+
+Included:
+- airport-only routes
+- missing airport codes
+- invalid routes
+- malformed expense values
+- negative hotel nights
+
+Reason:
+Travel platforms prioritize expense workflows rather than emissions accuracy.
+
+---
+
+## What Would Break In Production
+
+- duplicate expense claims
+- missing itinerary data
+- international currency normalization
+- partial trip segmentation
+```

@@ -1,7 +1,62 @@
-﻿# Tradeoffs
+﻿# TRADEOFFS.md
 
-1. Emission factor calculation is omitted. The assignment asks for ingestion and normalized review; adding factor libraries without PM signoff risks false precision.
+# 1. No Enterprise SSO
 
-2. Async processing is omitted. Celery/RQ would be appropriate for very large files, but synchronous processing is simpler and defensible for a 4-day MVP.
+Not implemented:
+- Okta
+- Azure AD
+- Google Workspace SSO
 
-3. Deep source-specific APIs are omitted. SAP, utility providers, and travel tools vary heavily by customer. CSV import proves the data model and review workflow first.
+Reason:
+Authentication complexity was deprioritized in favor of ingestion, normalization, and audit workflows.
+
+Production approach:
+Enterprise SSO and RBAC would be required.
+
+---
+
+# 2. No Async Ingestion Pipeline
+
+Uploads are processed synchronously.
+
+Reason:
+The prototype focused on correctness and traceability rather than ingestion throughput.
+
+Production approach:
+Use Celery, Kafka, or background workers.
+
+---
+
+# 3. No PDF Utility Parsing
+
+Utility ingestion only supports CSV uploads.
+
+Reason:
+PDF extraction would significantly increase implementation complexity within the 4-day constraint.
+
+Production approach:
+OCR + structured extraction pipeline.
+
+---
+
+# 4. No Direct SAP Integration
+
+The prototype uses exported SAP-style files rather than live APIs.
+
+Reason:
+Real SAP integrations differ significantly between enterprises.
+
+Production approach:
+Support OData/BAPI/IDoc integrations.
+
+---
+
+# 5. Simplified Emission Calculations
+
+The prototype focuses on ingestion and review workflows rather than scientifically accurate carbon accounting.
+
+Reason:
+The assignment emphasized normalization and operational handling.
+
+Production approach:
+Integrate audited emission factor datasets and methodology engines.
