@@ -11,7 +11,12 @@ import StatCard from "../components/StatCard";
 export default function Dashboard() {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
-  useEffect(() => { api.get("/emissions/records/dashboard/").then(r => setStats(r.data)).finally(() => setLoading(false)); }, []);
+  useEffect(() => {
+  api
+    .get("/api/emissions/records/dashboard/")
+    .then((r) => setStats(r.data))
+    .finally(() => setLoading(false));
+}, []);
   const ingestionData = useMemo(() => (stats?.ingestion_statistics || []).map(s => ({ name: s.source__source_type || "unknown", count: s.count })), [stats]);
   const statusData = useMemo(() => [
     { name: "Approved", value: stats?.approved_records || 0, color: "#059669" },
