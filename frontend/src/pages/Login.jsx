@@ -8,7 +8,7 @@ import { useToast } from "../components/Toast";
 
 export default function Login() {
   const [email, setEmail] = useState("analyst@example.com");
-  const [password, setPassword] = useState("password123");
+  const [password, setPassword] = useState("Password@12345")
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { showToast } = useToast();
